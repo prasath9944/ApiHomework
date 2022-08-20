@@ -41,10 +41,11 @@ def delete():
         return jsonify(str(cursor))
 
 
-@app.route('/update/<int id>',methods=['PUT'])
-def update(id):
-    if request.method == 'PUT':
+@app.route('/update',methods=['POST'])
+def update():
+    if request.method == 'POST':
         connection, cursor = sql_connection()
+        id=request.json['id']
         name = request.json['name']
         emailid = request.json['emailid']
         passwd = request.json['passwd']
